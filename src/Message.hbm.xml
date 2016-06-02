@@ -1,0 +1,236 @@
+<?xml version="1.0"?> 
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+    
+<hibernate-mapping> 
+    <class 
+        name="Message"
+        table="message">
+        <id 
+            name="id" 
+            column="idMessage">
+            <generator class="increment"/> 
+        </id>
+		
+        <property 
+            name="message" 
+            column="Message"/>
+    </class>
+    <class name="xml.LiggingEntity" table="ligging" schema="funda">
+        <id name="id">
+            <column name="ID" sql-type="int(11)"/>
+        </id>
+        <property name="name">
+            <column name="Name" sql-type="varchar(25)" length="25" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.MkantoorEntity" table="mkantoor" schema="funda">
+        <id name="mkid">
+            <column name="MKID" sql-type="int(11)"/>
+        </id>
+        <property name="name">
+            <column name="Name" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="address">
+            <column name="Address" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="pc">
+            <column name="PC" sql-type="varchar(7)" length="7" not-null="true"/>
+        </property>
+        <property name="city">
+            <column name="City" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="phone">
+            <column name="Phone" sql-type="varchar(15)" length="15" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.MkantoormdwEntity" table="mkantoormdw" schema="funda">
+        <id name="mkmdwid">
+            <column name="MKMDWID" sql-type="int(11)"/>
+        </id>
+        <property name="mkid">
+            <column name="MKID" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="name">
+            <column name="Name" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.SoortbouwEntity" table="soortbouw" schema="funda">
+        <id name="id">
+            <column name="ID" sql-type="int(11)"/>
+        </id>
+        <property name="name">
+            <column name="Name" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.SoortobjectEntity" table="soortobject" schema="funda">
+        <id name="id">
+            <column name="ID" sql-type="int(11)"/>
+        </id>
+        <property name="name">
+            <column name="Name" sql-type="varchar(15)" length="15" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.SoortvraagprijsEntity" table="soortvraagprijs" schema="funda">
+        <id name="id">
+            <column name="ID" sql-type="int(11)"/>
+        </id>
+        <property name="name">
+            <column name="Name" sql-type="varchar(8)" length="8" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.SoortwoningEntity" table="soortwoning" schema="funda">
+        <id name="id">
+            <column name="Id" sql-type="int(11)"/>
+        </id>
+        <property name="name">
+            <column name="Name" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.StatusEntity" table="status" schema="funda">
+        <id name="id">
+            <column name="Id" sql-type="int(11)"/>
+        </id>
+        <property name="name">
+            <column name="Name" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.TypewoningEntity" table="typewoning" schema="funda">
+        <id name="id">
+            <column name="ID" sql-type="int(11)"/>
+        </id>
+        <property name="name">
+            <column name="Name" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.WoEntity" table="wo" schema="funda">
+        <id name="woid">
+            <column name="WOID" sql-type="int(11)"/>
+        </id>
+        <property name="mkid">
+            <column name="MKID" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="address">
+            <column name="Address" sql-type="varchar(1000)" length="1000" not-null="true"/>
+        </property>
+        <property name="pc">
+            <column name="PC" sql-type="varchar(7)" length="7" not-null="true"/>
+        </property>
+        <property name="city">
+            <column name="City" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="soortObject">
+            <column name="SoortObject" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="soortWoning">
+            <column name="SoortWoning" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="typeWoning">
+            <column name="TypeWoning" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="soortBouw">
+            <column name="SoortBouw" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="bouwJaar">
+            <column name="BouwJaar" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="mkmdwid">
+            <column name="MKMDWID" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.WoAdEntity" table="wo_ad" schema="funda">
+        <id name="woAdId">
+            <column name="wo_ad_id" sql-type="int(11)"/>
+        </id>
+        <property name="woid">
+            <column name="WOID" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="vraagprijs">
+            <column name="vraagprijs" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="vraagprijsSoort">
+            <column name="vraagprijs_soort" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="omschrijving">
+            <column name="omschrijving" sql-type="text" not-null="true"/>
+        </property>
+        <property name="statusId">
+            <column name="status_id" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="plaatsingsDatum">
+            <column name="plaatsings_datum" sql-type="date" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.WoDetailsEntity" table="wo_details" schema="funda">
+        <id name="woDetailsId">
+            <column name="wo_details_id" sql-type="int(11)"/>
+        </id>
+        <property name="woid">
+            <column name="WOID" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="woonOppervlakte">
+            <column name="Woon_oppervlakte" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="inhoud">
+            <column name="Inhoud" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="aantalkamers">
+            <column name="Aantalkamers" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="aantalbadkamers">
+            <column name="Aantalbadkamers" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="aantalwoonlagen">
+            <column name="Aantalwoonlagen" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="perceelOppervlakte">
+            <column name="Perceel_oppervlakte" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="tuinOppervlakte">
+            <column name="Tuin_oppervlakte" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.WoLiggingEntity" table="wo_ligging" schema="funda">
+        <id name="woLiggingId">
+            <column name="wo_ligging_id" sql-type="int(11)"/>
+        </id>
+        <property name="woid">
+            <column name="WOID" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="liggingId">
+            <column name="ligging_id" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+    <class name="xml.AfspraakEntity" table="afspraak" schema="funda">
+        <id name="afspraakId">
+            <column name="afspraak_id" sql-type="int(11)"/>
+        </id>
+        <property name="mkmdwid">
+            <column name="MKMDWID" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="woid">
+            <column name="WOID" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="afspraakDateTime">
+            <column name="afspraak_date_time" sql-type="datetime"/>
+        </property>
+    </class>
+    <class name="xml.UserEntity" table="user" schema="funda">
+        <id name="userId">
+            <column name="user_id" sql-type="int(11)"/>
+        </id>
+        <property name="medewerkerId">
+            <column name="medewerker_id" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="username">
+            <column name="username" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="pwd">
+            <column name="pwd" sql-type="varchar(25)" length="25"/>
+        </property>
+        <property name="type">
+            <column name="type" sql-type="enum('m', 'a')"/>
+        </property>
+    </class>
+</hibernate-mapping> 
