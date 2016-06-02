@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by peter on 02-Jun-16.
@@ -18,10 +20,13 @@ import java.util.List;
 public class LoginScreen extends JFrame {
 
     public LoginScreen(){
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        //Close all processes when clicking on 'x' in the frame
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300,300);
         setDefaultCloseOperation(1);
         JLabel usernameLabel = new JLabel("Username: ");
+        JLabel error = new JLabel("");
+        error.setForeground(Color.red);
         JTextField username = new JTextField(25);
         JLabel passwordLabel = new JLabel("Password :");
         JPasswordField password = new JPasswordField(25);
@@ -40,13 +45,14 @@ public class LoginScreen extends JFrame {
                     new MainScreen();
                 }
                 if(check == false){
-                    usernameLabel.setText("Username or password incorrect");
+                    error.setText("Username or password incorrect");
                 }
             }
         });
 
         panel.add(usernameLabel);
         panel.add(username);
+        panel.add(error);
         panel2.add(passwordLabel);
         panel2.add(password);
         panel3.add(button);
@@ -60,6 +66,9 @@ public class LoginScreen extends JFrame {
         boolean check = false;
         String selectQuery = "SELECT username, pwd FROM UserEntity WHERE username = :username AND pwd = :password";
 
+        //Set de logger op warning only level
+        Logger log = Logger.getLogger("org.hibernate");
+        log.setLevel(Level.WARNING);
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Query query = session.createQuery(selectQuery);
