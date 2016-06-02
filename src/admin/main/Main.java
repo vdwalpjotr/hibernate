@@ -5,7 +5,7 @@ import admin.ui.MainScreen;
 
 public class Main {	
 	public Main() {
-//		new MainScreen();
+
 		new LoginScreen();
 	}
 }

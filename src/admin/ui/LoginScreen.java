@@ -1,9 +1,16 @@
 package admin.ui;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import javax.swing.*;
+import util.HibernateUtil;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * Created by peter on 02-Jun-16.
@@ -11,7 +18,9 @@ import java.awt.event.ActionListener;
 public class LoginScreen extends JFrame {
 
     public LoginScreen(){
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(300,300);
+        setDefaultCloseOperation(1);
         JLabel usernameLabel = new JLabel("Username: ");
         JTextField username = new JTextField(25);
         JLabel passwordLabel = new JLabel("Password :");
@@ -25,6 +34,14 @@ public class LoginScreen extends JFrame {
         button.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                boolean check = checkUser(username.getText(), password.getPassword());
+                if(check == true){
+                    setVisible(false);
+                    dispose();
+                    new MainScreen();
+                }
+                if(check == false){
+                    usernameLabel.setText("Username or password incorrect");
+                }
             }
         });
 
@@ -40,7 +57,26 @@ public class LoginScreen extends JFrame {
     }
 
     private boolean checkUser(String username, char[] password){
+        boolean check = false;
+        String selectQuery = "SELECT username, pwd FROM UserEntity WHERE username = :username AND pwd = :password";
 
-        return true;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        Query query = session.createQuery(selectQuery);
+        query.setParameter("username", username);
+        query.setParameter("password", new String(password));
+        List results = query.list();
+        if(!results.isEmpty()){
+            check = true;
+
+        }
+        for(Object res : results){
+            Object[] fields = (Object[]) res;
+            System.out.println(fields[0]);
+        }
+        System.out.println(results);
+        session.close();
+
+        return check;
     }
 }
