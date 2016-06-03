@@ -1,4 +1,4 @@
-package xml;
+package dom;
 
 import javax.persistence.*;
 import java.sql.Date;

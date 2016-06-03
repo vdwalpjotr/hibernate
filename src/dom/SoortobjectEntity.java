@@ -1,4 +1,4 @@
-package xml;
+package dom;
 
 import javax.persistence.*;
 
@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by peter on 31-May-16.
  */
 @Entity
-@Table(name = "soortbouw", schema = "funda", catalog = "")
-public class SoortbouwEntity {
+@Table(name = "soortobject", schema = "funda", catalog = "")
+public class SoortobjectEntity {
     private int id;
     private String name;
 
@@ -22,7 +22,7 @@ public class SoortbouwEntity {
     }
 
     @Basic
-    @Column(name = "Name", nullable = true, length = 20)
+    @Column(name = "Name", nullable = true, length = 15)
     public String getName() {
         return name;
     }
@@ -36,7 +36,7 @@ public class SoortbouwEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SoortbouwEntity that = (SoortbouwEntity) o;
+        SoortobjectEntity that = (SoortobjectEntity) o;
 
         if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;

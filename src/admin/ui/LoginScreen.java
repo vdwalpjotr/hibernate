@@ -1,5 +1,9 @@
 package admin.ui;
 
+import admin.main.UserSession;
+import dom.users.dao.UserDao;
+import dom.users.dao.UserDaoImp;
+import dom.users.model.UserEntity;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -18,8 +22,9 @@ import java.util.logging.Logger;
  * Created by peter on 02-Jun-16.
  */
 public class LoginScreen extends JFrame {
-
-    public LoginScreen(){
+    private UserSession userSession;
+    public LoginScreen(UserSession userSession){
+        this.userSession = userSession;
         //Close all processes when clicking on 'x' in the frame
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300,300);
@@ -38,13 +43,13 @@ public class LoginScreen extends JFrame {
         JButton button = new JButton("Login");
         button.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-               boolean check = checkUser(username.getText(), password.getPassword());
-                if(check == true){
+               checkUser(username.getText(), password.getPassword());
+                if(userSession.getLoggedIn() == true){
                     setVisible(false);
                     dispose();
-                    new MainScreen();
+                    new MainScreen(userSession);
                 }
-                if(check == false){
+                if(userSession.getLoggedIn() == false){
                     error.setText("Username or password incorrect");
                 }
             }
@@ -62,30 +67,14 @@ public class LoginScreen extends JFrame {
         this.setVisible(true);
     }
 
-    private boolean checkUser(String username, char[] password){
-        boolean check = false;
-        String selectQuery = "SELECT username, pwd FROM UserEntity WHERE username = :username AND pwd = :password";
+    private void checkUser(String username, char[] password){
 
-        //Set de logger op warning only level
-        Logger log = Logger.getLogger("org.hibernate");
-        log.setLevel(Level.WARNING);
-        Session session = HibernateUtil.getSessionFactory().openSession();
-
-        Query query = session.createQuery(selectQuery);
-        query.setParameter("username", username);
-        query.setParameter("password", new String(password));
-        List results = query.list();
-        if(!results.isEmpty()){
-            check = true;
-
+        if(!username.isEmpty() && password.length != 0) {
+            UserEntity user = new UserDaoImp().findByUsername(username, new String(password));
+            if (user != null) {
+                userSession.setLoggedIn(true);
+                userSession.setUser(user);
+            }
         }
-        for(Object res : results){
-            Object[] fields = (Object[]) res;
-            System.out.println(fields[0]);
-        }
-        System.out.println(results);
-        session.close();
-
-        return check;
     }
 }

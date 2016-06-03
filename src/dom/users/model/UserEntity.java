@@ -1,17 +1,23 @@
-package xml;
+package dom.users.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
- * Created by peter on 31-May-16.
+ * Created by peter on 03-Jun-16.
  */
 @Entity
 @Table(name = "user", schema = "funda", catalog = "")
-public class UserEntity {
+public class UserEntity implements Serializable{
+    public enum Enum {
+        medewerker,
+        admin
+    }
     private int userId;
     private Integer medewerkerId;
     private String username;
     private String pwd;
+    @Enumerated(EnumType.ORDINAL)
     private Enum type;
 
     @Id

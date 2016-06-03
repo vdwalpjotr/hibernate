@@ -11,20 +11,23 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import admin.main.UserSession;
 import admin.settings.Settings;
 
 @SuppressWarnings("serial")
 public class MainScreen extends JFrame {
 	private Map<String, InputElement> makelaarPanelEls = new HashMap<String, InputElement>();
 	private Map<String, InputElement> woningPanelEls = new HashMap<String, InputElement>();
-	private JPanel notifyPanel, makelaarPanel, woningPanel;
+	private JPanel notifyPanel, makelaarPanel, woningPanel, sessionPanel;
 	
 	private JLabel makelaarNotifyLabel, woNotifyLabel;
-	
-	public MainScreen() {		
+	private UserSession userSession;
+	public MainScreen(UserSession userSession) {
+		this.userSession = userSession;
 		mainLayout();
+
 		panels();
-		
+		this.setTitle("Funda Administratie. Logged in as: " + userSession.getUser().getUsername());
 		addMakelaarTextFields();
 		addMakelaarButtons();
 		addItemsToPanel(makelaarPanelEls, makelaarPanel);
@@ -54,19 +57,24 @@ public class MainScreen extends JFrame {
 		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
+
 		notifyPanel=new JPanel();
 		makelaarPanel=new JPanel();
 		woningPanel=new JPanel();
+		sessionPanel = new JPanel();
 	}
 	
 	private void panels() {
+		sessionPanel.setLayout(null);
 		makelaarPanel.setLayout(null);
 		woningPanel.setLayout(null);
 		notifyPanel.setLayout(null);
+
 	}
 	
 	private void addMakelaarTextFields() {
+
 		makelaarPanelEls.put ("mkmdwid", new InputField("Zoeken op 'MKMDWID'", new int[]{180, 10, 200, 22}));
 		makelaarPanelEls.put ("naam", new InputField("Makelaarnaam", new int[]{180, 70, 200, 22}));
 		

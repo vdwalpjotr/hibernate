@@ -17,7 +17,7 @@
             name="message" 
             column="Message"/>
     </class>
-    <class name="xml.LiggingEntity" table="ligging" schema="funda">
+    <class name="dom.LiggingEntity" table="ligging" schema="funda">
         <id name="id">
             <column name="ID" sql-type="int(11)"/>
         </id>
@@ -25,7 +25,7 @@
             <column name="Name" sql-type="varchar(25)" length="25" not-null="true"/>
         </property>
     </class>
-    <class name="xml.MkantoorEntity" table="mkantoor" schema="funda">
+    <class name="dom.MkantoorEntity" table="mkantoor" schema="funda">
         <id name="mkid">
             <column name="MKID" sql-type="int(11)"/>
         </id>
@@ -45,7 +45,7 @@
             <column name="Phone" sql-type="varchar(15)" length="15" not-null="true"/>
         </property>
     </class>
-    <class name="xml.MkantoormdwEntity" table="mkantoormdw" schema="funda">
+    <class name="dom.MkantoormdwEntity" table="mkantoormdw" schema="funda">
         <id name="mkmdwid">
             <column name="MKMDWID" sql-type="int(11)"/>
         </id>
@@ -56,7 +56,7 @@
             <column name="Name" sql-type="varchar(50)" length="50" not-null="true"/>
         </property>
     </class>
-    <class name="xml.SoortbouwEntity" table="soortbouw" schema="funda">
+    <class name="dom.SoortbouwEntity" table="soortbouw" schema="funda">
         <id name="id">
             <column name="ID" sql-type="int(11)"/>
         </id>
@@ -64,7 +64,7 @@
             <column name="Name" sql-type="varchar(20)" length="20" not-null="true"/>
         </property>
     </class>
-    <class name="xml.SoortobjectEntity" table="soortobject" schema="funda">
+    <class name="dom.SoortobjectEntity" table="soortobject" schema="funda">
         <id name="id">
             <column name="ID" sql-type="int(11)"/>
         </id>
@@ -72,7 +72,7 @@
             <column name="Name" sql-type="varchar(15)" length="15" not-null="true"/>
         </property>
     </class>
-    <class name="xml.SoortvraagprijsEntity" table="soortvraagprijs" schema="funda">
+    <class name="dom.SoortvraagprijsEntity" table="soortvraagprijs" schema="funda">
         <id name="id">
             <column name="ID" sql-type="int(11)"/>
         </id>
@@ -80,7 +80,7 @@
             <column name="Name" sql-type="varchar(8)" length="8" not-null="true"/>
         </property>
     </class>
-    <class name="xml.SoortwoningEntity" table="soortwoning" schema="funda">
+    <class name="dom.SoortwoningEntity" table="soortwoning" schema="funda">
         <id name="id">
             <column name="Id" sql-type="int(11)"/>
         </id>
@@ -88,7 +88,7 @@
             <column name="Name" sql-type="varchar(50)" length="50" not-null="true"/>
         </property>
     </class>
-    <class name="xml.StatusEntity" table="status" schema="funda">
+    <class name="dom.StatusEntity" table="status" schema="funda">
         <id name="id">
             <column name="Id" sql-type="int(11)"/>
         </id>
@@ -96,7 +96,7 @@
             <column name="Name" sql-type="varchar(50)" length="50" not-null="true"/>
         </property>
     </class>
-    <class name="xml.TypewoningEntity" table="typewoning" schema="funda">
+    <class name="dom.TypewoningEntity" table="typewoning" schema="funda">
         <id name="id">
             <column name="ID" sql-type="int(11)"/>
         </id>
@@ -104,7 +104,7 @@
             <column name="Name" sql-type="varchar(50)" length="50" not-null="true"/>
         </property>
     </class>
-    <class name="xml.WoEntity" table="wo" schema="funda">
+    <class name="dom.WoEntity" table="wo" schema="funda">
         <id name="woid">
             <column name="WOID" sql-type="int(11)"/>
         </id>
@@ -139,7 +139,7 @@
             <column name="MKMDWID" sql-type="int(11)" not-null="true"/>
         </property>
     </class>
-    <class name="xml.WoAdEntity" table="wo_ad" schema="funda">
+    <class name="dom.WoAdEntity" table="wo_ad" schema="funda">
         <id name="woAdId">
             <column name="wo_ad_id" sql-type="int(11)"/>
         </id>
@@ -162,7 +162,7 @@
             <column name="plaatsings_datum" sql-type="date" not-null="true"/>
         </property>
     </class>
-    <class name="xml.WoDetailsEntity" table="wo_details" schema="funda">
+    <class name="dom.WoDetailsEntity" table="wo_details" schema="funda">
         <id name="woDetailsId">
             <column name="wo_details_id" sql-type="int(11)"/>
         </id>
@@ -191,7 +191,7 @@
             <column name="Tuin_oppervlakte" sql-type="int(11)" not-null="true"/>
         </property>
     </class>
-    <class name="xml.WoLiggingEntity" table="wo_ligging" schema="funda">
+    <class name="dom.WoLiggingEntity" table="wo_ligging" schema="funda">
         <id name="woLiggingId">
             <column name="wo_ligging_id" sql-type="int(11)"/>
         </id>
@@ -202,7 +202,7 @@
             <column name="ligging_id" sql-type="int(11)" not-null="true"/>
         </property>
     </class>
-    <class name="xml.AfspraakEntity" table="afspraak" schema="funda">
+    <class name="dom.AfspraakEntity" table="afspraak" schema="funda">
         <id name="afspraakId">
             <column name="afspraak_id" sql-type="int(11)"/>
         </id>
@@ -216,7 +216,7 @@
             <column name="afspraak_date_time" sql-type="datetime"/>
         </property>
     </class>
-    <class name="xml.UserEntity" table="user" schema="funda">
+    <class name="dom.users.model.UserEntity" table="user" schema="funda">
         <id name="userId">
             <column name="user_id" sql-type="int(11)"/>
         </id>

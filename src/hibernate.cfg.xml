@@ -23,21 +23,22 @@
     <property name="current_session_context_class">thread</property>
 
     <!-- List of XML mapping files -->
-    <mapping class="xml.LiggingEntity"/>
-    <mapping class="xml.MkantoorEntity"/>
-    <mapping class="xml.MkantoormdwEntity"/>
-    <mapping class="xml.SoortbouwEntity"/>
-    <mapping class="xml.SoortobjectEntity"/>
-    <mapping class="xml.SoortvraagprijsEntity"/>
-    <mapping class="xml.SoortwoningEntity"/>
-    <mapping class="xml.StatusEntity"/>
-    <mapping class="xml.TypewoningEntity"/>
-    <mapping class="xml.WoEntity"/>
-    <mapping class="xml.WoAdEntity"/>
-    <mapping class="xml.WoDetailsEntity"/>
-    <mapping class="xml.WoLiggingEntity"/>
-    <mapping class="xml.AfspraakEntity"/>
-    <mapping class="xml.UserEntity"/>
+    <mapping class="dom.LiggingEntity"/>
+    <mapping class="dom.MkantoorEntity"/>
+    <mapping class="dom.MkantoormdwEntity"/>
+    <mapping class="dom.SoortbouwEntity"/>
+    <mapping class="dom.SoortobjectEntity"/>
+    <mapping class="dom.SoortvraagprijsEntity"/>
+    <mapping class="dom.SoortwoningEntity"/>
+    <mapping class="dom.StatusEntity"/>
+    <mapping class="dom.TypewoningEntity"/>
+    <mapping class="dom.WoEntity"/>
+    <mapping class="dom.WoAdEntity"/>
+    <mapping class="dom.WoDetailsEntity"/>
+    <mapping class="dom.WoLiggingEntity"/>
+    <mapping class="dom.AfspraakEntity"/>
+    <mapping class="dom.users.model.UserEntity"/>
+    <mapping class="dom.users.model.UserEntity"/>
 
     <!--
     <mapping resource="nl/hanze/hibernate/fruit/Fruit.hbm.xml"/>
